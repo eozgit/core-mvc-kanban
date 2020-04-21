@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using QuakeKanban.Models;
 
 namespace QuakeKanban.Data
 {
@@ -12,5 +13,7 @@ namespace QuakeKanban.Data
             : base(options)
         {
         }
+
+        public DbSet<Project> Project { get; set; }
     }
 }
