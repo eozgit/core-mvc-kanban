@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using core_mvc_kanban.Models;
+using QuakeKanban.Models;
 
-namespace core_mvc_kanban.Controllers
+namespace QuakeKanban.Controllers
 {
     public class HomeController : Controller
     {

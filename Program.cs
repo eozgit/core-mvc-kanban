@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace core_mvc_kanban
+namespace QuakeKanban
 {
     public class Program
     {

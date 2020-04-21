@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace core_mvc_kanban.Data
+namespace QuakeKanban.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

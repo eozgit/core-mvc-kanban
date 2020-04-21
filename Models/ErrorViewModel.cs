@@ -1,6 +1,6 @@
 using System;
 
-namespace core_mvc_kanban.Models
+namespace QuakeKanban.Models
 {
     public class ErrorViewModel
     {

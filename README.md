@@ -1,2 +1,2 @@
-# core-mvc-kanban
+# quake-kanban
 A simple kanban board
