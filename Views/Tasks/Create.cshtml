@@ -22,11 +22,7 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <select asp-for="Status" class="form-control"></select>
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
+            <input asp-for="Status" class="form-control" type="hidden" value="0" />
             <div class="form-group">
                 <label asp-for="Assignee" class="control-label"></label>
                 <input asp-for="Assignee" class="form-control" />
