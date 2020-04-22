@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-core_mvc_kanban-37E81CEB-F837-4973-966A-026A3D2CF5BB</UserSecretsId>
+    <UserSecretsId>aspnet-QuakeKanban-37E81CEB-F837-4973-966A-026A3D2CF5BB</UserSecretsId>
     <RootNamespace>QuakeKanban</RootNamespace>
   </PropertyGroup>
 

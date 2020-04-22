@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using QuakeKanban.Data;
 using QuakeKanban.Models;
 
-namespace core_mvc_kanban.Controllers
+namespace QuakeKanban.Controllers
 {
     public class ProjectsController : Controller
     {
