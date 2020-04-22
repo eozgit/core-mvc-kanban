@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -15,5 +15,7 @@ namespace QuakeKanban.Data
         }
 
         public DbSet<Project> Project { get; set; }
+
+        public DbSet<QuakeKanban.Models.Task> Task { get; set; }
     }
 }
