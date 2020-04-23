@@ -48,7 +48,7 @@ namespace QuakeKanban.Controllers
         {
             var vm = new TaskViewModel
             {
-                Users = _context.Users.Select(user => new SelectListItem(user.Email, user.Id)).ToList()
+                Users = GetOptionsForAssignee()
             };
             return View(vm);
         }
@@ -86,7 +86,7 @@ namespace QuakeKanban.Controllers
             var vm = new TaskViewModel
             {
                 Task = task,
-                Users = _context.Users.Select(user => new SelectListItem(user.Email, user.Id)).ToList()
+                Users = GetOptionsForAssignee()
             };
             return View(vm);
         }
@@ -158,6 +158,11 @@ namespace QuakeKanban.Controllers
         private bool TaskExists(int id)
         {
             return _context.Task.Any(e => e.Id == id);
+        }
+
+        private List<SelectListItem> GetOptionsForAssignee()
+        {
+            return _context.Users.OrderBy(user => user.Email).Select(user => new SelectListItem(user.Email, user.Id)).ToList();
         }
     }
 }
