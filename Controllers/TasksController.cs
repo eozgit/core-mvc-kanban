@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QuakeKanban.Data;
+using QuakeKanban.ViewModels;
 
 namespace QuakeKanban.Controllers
 {
@@ -45,7 +46,11 @@ namespace QuakeKanban.Controllers
         // GET: Tasks/Create
         public IActionResult Create()
         {
-            return View();
+            var vm = new TaskViewModel
+            {
+                Users = _context.Users.Select(user => new SelectListItem(user.Email, user.Id)).ToList()
+            };
+            return View(vm);
         }
 
         // POST: Tasks/Create
