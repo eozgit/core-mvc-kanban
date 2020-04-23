@@ -82,7 +82,13 @@ namespace QuakeKanban.Controllers
             {
                 return NotFound();
             }
-            return View(task);
+
+            var vm = new TaskViewModel
+            {
+                Task = task,
+                Users = _context.Users.Select(user => new SelectListItem(user.Email, user.Id)).ToList()
+            };
+            return View(vm);
         }
 
         // POST: Tasks/Edit/5
