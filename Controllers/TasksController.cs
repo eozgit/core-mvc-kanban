@@ -147,7 +147,12 @@ namespace QuakeKanban.Controllers
                 return NotFound();
             }
 
-            return View(task);
+            var vm = new TaskReadViewModel {
+                Task = task,
+                Assignee = GetEmailByUserId(task.Assignee)
+            };
+
+            return View(vm);
         }
 
         // POST: Tasks/Delete/5
