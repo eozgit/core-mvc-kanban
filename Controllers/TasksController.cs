@@ -40,7 +40,13 @@ namespace QuakeKanban.Controllers
                 return NotFound();
             }
 
-            return View(task);
+            var vm = new TaskReadViewModel
+            {
+                Task = task,
+                Assignee = GetEmailByUserId(task.Assignee)
+            };
+
+            return View(vm);
         }
 
         // GET: Tasks/Create
@@ -163,6 +169,11 @@ namespace QuakeKanban.Controllers
         private List<SelectListItem> GetOptionsForAssignee()
         {
             return _context.Users.OrderBy(user => user.Email).Select(user => new SelectListItem(user.Email, user.Id)).ToList();
+        }
+
+        private string GetEmailByUserId(string Id)
+        {
+            return _context.Users.FirstOrDefault(user => user.Id == Id)?.Email ?? "Unassigned";
         }
     }
 }
