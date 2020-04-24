@@ -1,4 +1,4 @@
-@model IEnumerable<QuakeKanban.Models.Task>
+@model QuakeKanban.ViewModels.TaskListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,25 +13,27 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Summary)
+                @Html.DisplayNameFor(model => model.Tasks[0].Summary)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Tasks[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                @Html.DisplayNameFor(model => model.Tasks[0].Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Assignee)
+                @Html.DisplayNameFor(model => model.Tasks[0].Assignee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StoryPoints)
+                @Html.DisplayNameFor(model => model.Tasks[0].StoryPoints)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@for (var i = 0; i < Model.Tasks.Count; i++) { 
+    var item =  Model.Tasks[i]; 
+    var assignee = Model.Assignees[i];
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Summary)
@@ -43,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Assignee)
+                @Html.DisplayFor(modelItem => assignee)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StoryPoints)

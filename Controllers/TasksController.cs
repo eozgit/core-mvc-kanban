@@ -22,7 +22,13 @@ namespace QuakeKanban.Controllers
         // GET: Tasks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Task.ToListAsync());
+            var tasks = await _context.Task.OrderBy(task => task.Id).ToListAsync();
+            var vm = new TaskListViewModel
+            {
+                Tasks = tasks,
+                Assignees = tasks.Select(task => GetEmailByUserId(task.Assignee)).ToList()
+            };
+            return View(vm);
         }
 
         // GET: Tasks/Details/5
@@ -147,7 +153,8 @@ namespace QuakeKanban.Controllers
                 return NotFound();
             }
 
-            var vm = new TaskReadViewModel {
+            var vm = new TaskReadViewModel
+            {
                 Task = task,
                 Assignee = GetEmailByUserId(task.Assignee)
             };
