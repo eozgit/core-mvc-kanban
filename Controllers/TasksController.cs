@@ -46,7 +46,7 @@ namespace QuakeKanban.Controllers
         // GET: Tasks/Create
         public IActionResult Create()
         {
-            var vm = new TaskViewModel
+            var vm = new TaskWriteViewModel
             {
                 Users = GetOptionsForAssignee()
             };
@@ -83,7 +83,7 @@ namespace QuakeKanban.Controllers
                 return NotFound();
             }
 
-            var vm = new TaskViewModel
+            var vm = new TaskWriteViewModel
             {
                 Task = task,
                 Users = GetOptionsForAssignee()
