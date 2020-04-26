@@ -73,3 +73,19 @@ body {
 body > div > main > div > div.col-md-6.col-md-offset-2 {
   display: none;
 }
+
+.taskReady {
+  background-color: aliceblue;
+}
+
+.taskInProgress {
+  background-color: mintcream;
+}
+
+.taskInQA {
+  background-color: ivory;
+}
+
+.taskDone {
+  background-color: ghostwhite;
+}
