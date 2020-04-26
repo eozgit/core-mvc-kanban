@@ -6,7 +6,6 @@ namespace QuakeKanban.ViewModels
 {
     public class TaskListViewModel
     {
-        public List<Task> Tasks { get; set; }
-        public List<string> Assignees { get; set; }
+        public List<TaskReadViewModel> Tasks { get; set; }
     }
 }

@@ -25,8 +25,11 @@ namespace QuakeKanban.Controllers
             var tasks = await _context.Task.OrderBy(task => task.Id).ToListAsync();
             var vm = new TaskListViewModel
             {
-                Tasks = tasks,
-                Assignees = tasks.Select(task => GetEmailByUserId(task.Assignee)).ToList()
+                Tasks = tasks.Select(task => new TaskReadViewModel
+                {
+                    Task = task,
+                    Assignee = GetEmailByUserId(task.Assignee)
+                }).ToList()
             };
             return View(vm);
         }

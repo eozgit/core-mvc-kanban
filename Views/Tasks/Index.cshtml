@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].Summary)
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Summary)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].Description)
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].Status)
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].Assignee)
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Assignee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].StoryPoints)
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.StoryPoints)
             </th>
             <th></th>
         </tr>
@@ -33,27 +33,27 @@
     <tbody>
 @for (var i = 0; i < Model.Tasks.Count; i++) { 
     var item =  Model.Tasks[i]; 
-    var assignee = Model.Assignees[i];
+    var task = item.Task;
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Summary)
+                @Html.DisplayFor(modelItem => task.Summary)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => task.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => task.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => assignee)
+                @Html.DisplayFor(modelItem => item.Assignee)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StoryPoints)
+                @Html.DisplayFor(modelItem => task.StoryPoints)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@task.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@task.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@task.Id">Delete</a>
             </td>
         </tr>
 }
