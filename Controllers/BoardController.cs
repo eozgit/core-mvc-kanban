@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuakeKanban.Data;
@@ -10,6 +11,7 @@ using QuakeKanban.ViewModels;
 
 namespace QuakeKanban.Controllers
 {
+    [Authorize]
     public class BoardController : Controller
     {
         private readonly ApplicationDbContext _context;
