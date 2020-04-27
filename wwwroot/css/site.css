@@ -89,3 +89,7 @@ body > div > main > div > div.col-md-6.col-md-offset-2 {
 .taskDone {
   background-color: ghostwhite;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
