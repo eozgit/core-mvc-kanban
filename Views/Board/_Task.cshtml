@@ -1,10 +1,19 @@
 @model QuakeKanban.ViewModels.TaskReadViewModel
 
 <div class="row m-2">
-<div class="card container-fluid  @("task" + @Model.Task.Status.ToString())">
-  <div class="card-body p-2">
-    <h5 class="card-title">@Model.Task.Summary</h5>
-    <p class="card-text">@Model.Task.Description</p>
+  <div class="card container-fluid  @("task" + @Model.Task.Status.ToString())">
+    <div class="card-body p-2">
+    <div class="d-flex justify-content-center">
+      <small class="mx-1 pt-1">@Model.Task.Id</small>
+      <h5 class="card-title mx-1">@Model.Task.Summary</h5>
+    </div>
+      <p class="card-text">@Model.Task.Description</p>
+    </div>
+    <div class="card-body p-2 d-flex justify-content-center">
+      <div class="mx-1">@Model.Task.Assignee</div>
+      <div class="rounded-circle border bg-light mx-1" style="width: 27px;">
+        <small class="font-weight-bold">@Model.Task.StoryPoints</small>
+      </div>
+    </div>
   </div>
-</div>
 </div>
