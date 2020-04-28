@@ -7,6 +7,9 @@
 <div class="text-center">
     <p class="display-4">@Model.Project.Name</p>
 
+    @{ var routeData = new Dictionary<string, string> { { "projectId", @Model.Project.Id.ToString() } }; }
+    <a asp-controller="Tasks" asp-action="Create" asp-all-route-data="routeData">Create New Task</a>
+
     <div class="container-fluid">
   <div class="row">
 

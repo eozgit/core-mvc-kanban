@@ -61,11 +61,12 @@ namespace QuakeKanban.Controllers
         }
 
         // GET: Tasks/Create
-        public IActionResult Create()
+        public IActionResult Create(int projectId)
         {
             var vm = new TaskWriteViewModel
             {
-                Users = GetOptionsForAssignee()
+                Users = GetOptionsForAssignee(),
+                ProjectId = projectId
             };
             return View(vm);
         }
@@ -75,13 +76,17 @@ namespace QuakeKanban.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Summary,Description,Status,Assignee,StoryPoints")] QuakeKanban.Models.Task task)
+        public async Task<IActionResult> Create(int projectId, [Bind("Id,Summary,Description,Status,Assignee,StoryPoints")] QuakeKanban.Models.Task task)
         {
             if (ModelState.IsValid)
             {
+                var project = await _context.Project
+                    .Include(project => project.Tasks)
+                    .FirstOrDefaultAsync(project => project.Id == projectId);
+                project.Tasks.Add(task);
                 _context.Add(task);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Board", new { Id = projectId });
             }
             return View(task);
         }
