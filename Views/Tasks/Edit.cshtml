@@ -48,7 +48,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @if(string.IsNullOrWhiteSpace(Model.ReturnUrl)) {
+        <a asp-action="Index">Back to List</a>
+    } else {
+        <a href="@System.Net.WebUtility.UrlDecode(Model.ReturnUrl)">Back to Board</a>
+    }
 </div>
 
 @section Scripts {

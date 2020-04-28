@@ -9,5 +9,6 @@ namespace QuakeKanban.ViewModels
     {
         public Task Task { get; set; }
         public List<SelectListItem> Users { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

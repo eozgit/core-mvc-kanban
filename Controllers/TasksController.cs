@@ -87,7 +87,7 @@ namespace QuakeKanban.Controllers
         }
 
         // GET: Tasks/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, string returnUrl)
         {
             if (id == null)
             {
@@ -103,7 +103,8 @@ namespace QuakeKanban.Controllers
             var vm = new TaskWriteViewModel
             {
                 Task = task,
-                Users = GetOptionsForAssignee()
+                Users = GetOptionsForAssignee(),
+                ReturnUrl = returnUrl
             };
             return View(vm);
         }
