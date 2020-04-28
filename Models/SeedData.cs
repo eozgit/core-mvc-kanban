@@ -99,7 +99,7 @@ namespace QuakeKanban.Models
                             new Task
                             {
                                 Summary = "Listen to fake news",
-                                Description = "Acquire as much wrong facts about fighting covid as possible",
+                                Description = "Acquire as many wrong facts about fighting covid as possible",
                                 Status = TaskStatus.InQA,
                                 StoryPoints = 2
                             },
@@ -127,7 +127,7 @@ namespace QuakeKanban.Models
                             new Task
                             {
                                 Summary = "Pick up a new skill",
-                                Description = "Juggling, building a tower of playing cards are some ideas",
+                                Description = "Juggling, building a tower of playing cards for instance",
                                 Status = TaskStatus.Ready,
                                 StoryPoints = 8
                             }
