@@ -45,7 +45,12 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Task.Id" />
+        <input type="hidden" asp-for="ReturnUrl" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        @if(string.IsNullOrWhiteSpace(Model.ReturnUrl)) {
+            <a asp-action="Index">Back to List</a>
+        } else {
+            <a href="@System.Net.WebUtility.UrlDecode(Model.ReturnUrl)">Back to Board</a>
+        }
     </form>
 </div>

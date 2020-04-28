@@ -7,5 +7,6 @@ namespace QuakeKanban.ViewModels
     {
         public Task Task { get; set; }
         public string Assignee { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

@@ -40,12 +40,12 @@
                     <span class="badge badge-pill badge-secondary">@Model.Task.StoryPoints</span>
                 </div>
                 <div class="mx-1 rounded bg-danger cursor-pointer">
-                    <a asp-controller="Tasks" asp-action="Delete" asp-route-id="@Model.Task.Id">
+                    @{ var routeData = new Dictionary<string, string> { { "returnUrl", @Context.Request.Path } }; }
+                    <a asp-controller="Tasks" asp-action="Delete" asp-all-route-data="routeData" asp-route-id="@Model.Task.Id">
                         <i class="material-icons p-1 text-white">delete_forever</i>
                     </a>
                 </div>
                 <div class="mx-1 rounded bg-success cursor-pointer">
-                    @{ var routeData = new Dictionary<string, string> { { "returnUrl", @Context.Request.Path } }; }
                     <a asp-controller="Tasks" asp-action="Edit" asp-all-route-data="routeData" asp-route-id="@Model.Task.Id">
                         <i class="material-icons p-1 text-white">edit</i>
                     </a>

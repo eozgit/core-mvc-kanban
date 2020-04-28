@@ -152,7 +152,7 @@ namespace QuakeKanban.Controllers
         }
 
         // GET: Tasks/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, string returnUrl)
         {
             if (id == null)
             {
@@ -169,7 +169,8 @@ namespace QuakeKanban.Controllers
             var vm = new TaskReadViewModel
             {
                 Task = task,
-                Assignee = GetEmailByUserId(task.Assignee)
+                Assignee = GetEmailByUserId(task.Assignee),
+                ReturnUrl = returnUrl
             };
 
             return View(vm);
@@ -178,12 +179,19 @@ namespace QuakeKanban.Controllers
         // POST: Tasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, string returnUrl)
         {
             var task = await _context.Task.FindAsync(id);
             _context.Task.Remove(task);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return Redirect(returnUrl);
+            }
         }
 
         private bool TaskExists(int id)
