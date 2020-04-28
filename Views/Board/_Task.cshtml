@@ -21,14 +21,29 @@
                     <i class="material-icons align-self-center text-muted">arrow_back_ios</i>
                 }
                 <p class="card-text">@Model.Task.Description</p>
-                <i class="material-icons align-self-center cursor-pointer">arrow_forward_ios</i>
+                @if(Model.Task.Status != QuakeKanban.Models.TaskStatus.Done) {
+                    <div class="align-self-center">
+                        <form asp-action="AdvanceTask" method="post">
+                            <input name="id" type="hidden" value="@Model.Task.Id" />
+                            <button class="link-button">
+                                <i class="material-icons align-self-center cursor-pointer text-dark">arrow_forward_ios</i>
+                            </button>
+                        </form>
+                    </div>
+                } else {
+                    <i class="material-icons align-self-center text-muted">arrow_forward_ios</i>
+                }
             </div>
             <div class="card-body p-2 d-flex justify-content-center">
                 <div class="mx-1">@Model.Task.Assignee</div>
-                <div class="mx-1"><span class="badge badge-pill badge-secondary">@Model.Task.StoryPoints</span></div>
-                <div class="mx-1 rounded bg-danger text-white cursor-pointer"><i
-                        class="material-icons p-1">delete_forever</i></div>
-                <div class="mx-1 rounded bg-success text-white cursor-pointer"><i class="material-icons p-1">edit</i>
+                <div class="mx-1">
+                    <span class="badge badge-pill badge-secondary">@Model.Task.StoryPoints</span>
+                </div>
+                <div class="mx-1 rounded bg-danger text-white cursor-pointer">
+                    <i class="material-icons p-1">delete_forever</i>
+                </div>
+                <div class="mx-1 rounded bg-success text-white cursor-pointer">
+                    <i class="material-icons p-1">edit</i>
                 </div>
             </div>
         </div>

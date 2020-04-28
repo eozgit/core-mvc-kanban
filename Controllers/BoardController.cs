@@ -72,6 +72,18 @@ namespace QuakeKanban.Controllers
             return RedirectToAction("Index", "Board", new { Id = task.Project.Id });
         }
 
+        public async Task<IActionResult> AdvanceTask(int id)
+        {
+            var task = await _context.Task.Include(task => task.Project).FirstOrDefaultAsync(task => task.Id == id);
+            if (task.Status != QuakeKanban.Models.TaskStatus.Done)
+            {
+                var i = (int)task.Status + 1;
+                task.Status = (QuakeKanban.Models.TaskStatus)i;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Board", new { Id = task.Project.Id });
+        }
+
         private string GetEmailByUserId(string Id)
         {
             return _context.Users.FirstOrDefault(user => user.Id == Id)?.Email ?? "Unassigned";
