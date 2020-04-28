@@ -43,10 +43,14 @@ namespace QuakeKanban.Controllers
             {
                 var tasks = project.Tasks
                     .Where(task => task.Status == status)
-                    .Select(task => new TaskReadViewModel
+                    .Select(task =>
                     {
-                        Task = task,
-                        Assignee = GetEmailByUserId(task.Assignee)
+                        string assignee = GetAssignee(task.Assignee);
+                        return new TaskReadViewModel
+                        {
+                            Task = task,
+                            Assignee = assignee
+                        };
                     })
                     .ToList();
 
@@ -58,6 +62,23 @@ namespace QuakeKanban.Controllers
             }
 
             return View(vm);
+        }
+
+        private string GetAssignee(string userId)
+        {
+            var assignee = GetEmailByUserId(userId);
+            var another = assignee != "Unassigned" && assignee != HttpContext.User.Identity.Name;
+            assignee = assignee.Split("@").First();
+            if (another)
+            {
+                if (assignee.Length > 5)
+                {
+                    assignee = assignee.Substring(0, 5);
+                }
+                assignee = assignee + "**";
+            }
+
+            return assignee;
         }
 
         public async Task<IActionResult> MoveTaskBack(int id)
