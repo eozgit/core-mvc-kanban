@@ -13,6 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="@Model.Task.Id" />
+            <input type="hidden" asp-for="@Model.ReturnUrl" />
             <div class="form-group">
                 <label asp-for="@Model.Task.Summary" class="control-label"></label>
                 <input asp-for="@Model.Task.Summary" class="form-control" />

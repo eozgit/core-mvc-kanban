@@ -114,7 +114,7 @@ namespace QuakeKanban.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Summary,Description,Status,Assignee,StoryPoints")] QuakeKanban.Models.Task task)
+        public async Task<IActionResult> Edit(int id, string returnUrl, [Bind("Id,Summary,Description,Status,Assignee,StoryPoints")] QuakeKanban.Models.Task task)
         {
             if (id != task.Id)
             {
@@ -139,7 +139,14 @@ namespace QuakeKanban.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                if (string.IsNullOrWhiteSpace(returnUrl))
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Redirect(returnUrl);
+                }
             }
             return View(task);
         }
