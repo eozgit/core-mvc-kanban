@@ -42,8 +42,10 @@
                 <div class="mx-1 rounded bg-danger text-white cursor-pointer">
                     <i class="material-icons p-1">delete_forever</i>
                 </div>
-                <div class="mx-1 rounded bg-success text-white cursor-pointer">
-                    <i class="material-icons p-1">edit</i>
+                <div class="mx-1 rounded bg-success cursor-pointer">
+                    <a asp-controller="Tasks" asp-action="Edit" asp-route-id="@Model.Task.Id">
+                        <i class="material-icons p-1 text-white">edit</i>
+                    </a>
                 </div>
             </div>
         </div>
