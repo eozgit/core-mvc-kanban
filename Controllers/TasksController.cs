@@ -30,7 +30,7 @@ namespace QuakeKanban.Controllers
                 Tasks = tasks.Select(task => new TaskReadViewModel
                 {
                     Task = task,
-                    Assignee = GetEmailByUserId(task.Assignee)
+                    Assignee = GetAssignee(task.Assignee)
                 }).ToList()
             };
             return View(vm);
@@ -54,7 +54,7 @@ namespace QuakeKanban.Controllers
             var vm = new TaskReadViewModel
             {
                 Task = task,
-                Assignee = GetEmailByUserId(task.Assignee)
+                Assignee = GetAssignee(task.Assignee)
             };
 
             return View(vm);
@@ -174,7 +174,7 @@ namespace QuakeKanban.Controllers
             var vm = new TaskReadViewModel
             {
                 Task = task,
-                Assignee = GetEmailByUserId(task.Assignee),
+                Assignee = GetAssignee(task.Assignee),
                 ReturnUrl = returnUrl
             };
 
@@ -206,12 +206,26 @@ namespace QuakeKanban.Controllers
 
         private List<SelectListItem> GetOptionsForAssignee()
         {
-            return _context.Users.OrderBy(user => user.Email).Select(user => new SelectListItem(user.Email, user.Id)).ToList();
+            return _context.Users
+                .OrderBy(user => user.Email)
+                .ToList()
+                .Select(user => new SelectListItem(GetAssignee(user.Email), user.Id))
+                .ToList();
         }
 
-        private string GetEmailByUserId(string Id)
+        private string GetAssignee(string email)
         {
-            return _context.Users.FirstOrDefault(user => user.Id == Id)?.Email ?? "Unassigned";
+            var another = email != HttpContext.User.Identity.Name;
+            var assignee = email.Split("@").First();
+            if (another)
+            {
+                if (assignee.Length > 5)
+                {
+                    assignee = assignee.Substring(0, 5);
+                }
+                assignee = assignee + "**";
+            }
+            return assignee;
         }
     }
 }
