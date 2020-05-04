@@ -1,5 +1,5 @@
 # quake-kanban
-Kanban board, view app <a href="https://quake-kanban.azurewebsites.net/" target="_blank">here</a>
+Kanban board
 
 Instructions
 
@@ -8,7 +8,7 @@ Instructions
 3. Go to your inbox and click on the link in the email sent from the system to verify your email
 4. Login to the app
 5. Go to projects page
-6. Create a project (Optional)
+6. Create a project
 7. Go to project board
 8. Create a task
 9. Move task to the next column
