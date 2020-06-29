@@ -1,14 +1,20 @@
-# quake-kanban
-Kanban board
+#### Video
 
-Instructions
 
-1. Open the app <a href="https://quake-kanban.azurewebsites.net/" target="_blank">here</a>
-2. Register with your email
-3. Go to your inbox and click on the link in the email sent from the system to verify your email
-4. Login to the app
-5. Go to projects page
-6. Create a project
-7. Go to project board
-8. Create a task
-9. Move task to the next column
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=I0vi7YfAicU" 
+target="_blank"><img src="http://img.youtube.com/vi/I0vi7YfAicU/0.jpg" 
+alt="Quake-Kanban" width="480" height="360" border="10" /></a>
+
+
+### Kanban board
+
+
+###### Stack
+- .Net Core MVC
+- Entity Framework Core
+
+
+###### Features
+- Security/Authentication
+- CRUD Projects
+- CRUD Issues
